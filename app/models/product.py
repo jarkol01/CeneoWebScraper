@@ -18,7 +18,6 @@ class Product():
         self.pros_count = pros_count
         self.cons_count = cons_count
         self.average_score = average_score
-        self.opinions = opinions
         return self
 
     def extract_name(self):
@@ -90,11 +89,19 @@ class Product():
         return self
 
     def __str__(self):
-        pass
+        return f"{self.product_id}, {self.product_name}, {self.opinions}, {self.opinions_count}, {self.pros_count}, {self.cons_count}, {self.average_score}"
     def __repr_(self):
-        pass
-    def to_dict(self):
-        pass
+        return f'Opinion("{self.product_id}","{self.product_name}","{self.opinions}","{self.opinions_count}","{self.pros_count}","{self.cons_count}","{self.average_score}")'
+    def to_dict(self) -> dict:
+        return {
+            "product_id": self.product_id,
+            "product_name": self.product_name,
+            "opinions": self.opinions,
+            "opinions_count": self.opinions_count,
+            "pros_count": self.pros_count,
+            "cons_count": self.cons_count,
+            "average_score": self.average_score
+        }
     def export_opinions(self):
         if not os.path.exists('app/opinions'):
             os.makedirs('app/opinions')
